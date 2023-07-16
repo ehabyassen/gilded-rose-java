@@ -122,7 +122,7 @@ class GildedRoseTest {
 
     @Test
     void test_that_Sulfuras_never_has_to_be_sold() {
-        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 1, 5)};
+        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 1, 80)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -132,22 +132,22 @@ class GildedRoseTest {
 
     @Test
     void test_that_Sulfuras_quality_does_not_degrade_if_sellIn_has_not_passed() {
-        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 1, 5)};
+        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", 1, 80)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals(5, app.items[0].quality);
+        assertEquals(80, app.items[0].quality);
     }
 
     @Test
     void test_that_Sulfuras_quality_does_not_degrade_if_sellIn_has_passed() {
-        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", -1, 5)};
+        Item[] items = new Item[]{new Item("Sulfuras, Hand of Ragnaros", -1, 80)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals(5, app.items[0].quality);
+        assertEquals(80, app.items[0].quality);
     }
 
     @Test
