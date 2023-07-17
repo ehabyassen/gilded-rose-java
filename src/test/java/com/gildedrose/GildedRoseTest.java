@@ -1,9 +1,6 @@
 package com.gildedrose;
 
-import com.gildedrose.items.AgedBrie;
-import com.gildedrose.items.Backstage;
-import com.gildedrose.items.DefaultItem;
-import com.gildedrose.items.Sulfuras;
+import com.gildedrose.items.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -201,6 +198,36 @@ class GildedRoseTest {
     @Test
     void test_that_Backstage_quality_drops_to_zero_if_sellIn_has_passed() {
         Item[] items = new Item[]{new Backstage("Backstage passes to a TAFKAL80ETC concert", 0, 5)};
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
+    void test_that_Conjured_quality_is_degraded_by_two_per_update_if_sellIn_has_not_passed() {
+        Item[] items = new Item[]{new Conjured("Conjured Mana Cake", 1, 5)};
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(3, app.items[0].quality);
+    }
+
+    @Test
+    void test_that_Conjured_quality_is_degraded_by_four_per_update_if_sellIn_has_passed() {
+        Item[] items = new Item[]{new Conjured("Conjured Mana Cake", 0, 5)};
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        assertEquals(1, app.items[0].quality);
+    }
+
+    @Test
+    void test_that_Conjured_quality_does_not_degrade_to_a_negative_value() {
+        Item[] items = new Item[]{new Conjured("Conjured Mana Cake", 0, 0)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
