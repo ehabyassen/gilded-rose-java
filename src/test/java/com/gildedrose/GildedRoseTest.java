@@ -1,11 +1,35 @@
 package com.gildedrose;
 
+import ch.qos.logback.classic.Level;
+import ch.qos.logback.classic.Logger;
+import ch.qos.logback.classic.spi.ILoggingEvent;
+import ch.qos.logback.core.read.ListAppender;
 import com.gildedrose.items.*;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class GildedRoseTest {
+
+    private ListAppender<ILoggingEvent> appender;
+    private final Logger appLogger = (Logger) LoggerFactory.getLogger(GildedRose.class);
+
+    @BeforeEach
+    public void setUp() {
+        appender = new ListAppender<>();
+        appender.start();
+        appLogger.addAppender(appender);
+    }
+
+    @AfterEach
+    public void tearDown() {
+        appLogger.detachAppender(appender);
+    }
 
     @Test
     void test_that_quality_degrades_by_one_per_update_if_sellIn_has_not_passed() {
@@ -233,5 +257,19 @@ class GildedRoseTest {
         app.updateQuality();
 
         assertEquals(0, app.items[0].quality);
+    }
+
+    @Test
+    void test_that_non_updatable_item_is_logged_as_info() {
+        Item[] items = new Item[]{new Item("non-updatable item", 1, 5)};
+        GildedRose app = new GildedRose(items);
+
+        app.updateQuality();
+
+        List<ILoggingEvent> loggingEvents = appender.list;
+        assertEquals(1, loggingEvents.size());
+        ILoggingEvent loggingEvent = loggingEvents.get(0);
+        assertEquals(Level.INFO, loggingEvent.getLevel());
+        assertEquals("Non updatable item: non-updatable item, 1, 5", loggingEvent.getFormattedMessage());
     }
 }
