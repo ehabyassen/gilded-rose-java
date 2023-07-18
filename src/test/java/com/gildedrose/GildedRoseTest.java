@@ -36,7 +36,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new UpdatableItem("foo", 1, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(4, app.items[0].quality);
     }
@@ -46,7 +46,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new UpdatableItem("foo", 0, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(3, app.items[0].quality);
     }
@@ -56,7 +56,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new UpdatableItem("foo", 0, 0)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(0, app.items[0].quality);
     }
@@ -66,7 +66,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new AgedBrie("Aged Brie", 1, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(6, app.items[0].quality);
     }
@@ -76,7 +76,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new AgedBrie("Aged Brie", 1, 50)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(50, app.items[0].quality);
     }
@@ -86,7 +86,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new AgedBrie("Aged Brie", 0, 49)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(50, app.items[0].quality);
     }
@@ -96,7 +96,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new AgedBrie("Aged Brie", 0, 48)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(50, app.items[0].quality);
     }
@@ -106,7 +106,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Backstage("Backstage passes to a TAFKAL80ETC concert", 1, 50)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(50, app.items[0].quality);
     }
@@ -117,7 +117,7 @@ class GildedRoseTest {
             Item[] items = new Item[]{new Backstage("Backstage passes to a TAFKAL80ETC concert", i, 49)};
             GildedRose app = new GildedRose(items);
 
-            app.updateQuality();
+            app.updateItems();
 
             assertEquals(50, app.items[0].quality);
         }
@@ -129,7 +129,7 @@ class GildedRoseTest {
             Item[] items = new Item[]{new Backstage("Backstage passes to a TAFKAL80ETC concert", i, 49)};
             GildedRose app = new GildedRose(items);
 
-            app.updateQuality();
+            app.updateItems();
 
             assertEquals(50, app.items[0].quality);
         }
@@ -140,7 +140,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new UpdatableItem("foo", 1, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(0, app.items[0].sellIn);
     }
@@ -150,7 +150,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Sulfuras("Sulfuras, Hand of Ragnaros", 1)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(1, app.items[0].sellIn);
     }
@@ -160,7 +160,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Sulfuras("Sulfuras, Hand of Ragnaros", 1)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(Sulfuras.QUALITY, app.items[0].quality);
     }
@@ -170,7 +170,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Backstage("Backstage passes to a TAFKAL80ETC concert", 11, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(6, app.items[0].quality);
     }
@@ -181,7 +181,7 @@ class GildedRoseTest {
             Item[] items = new Item[]{new Backstage("Backstage passes to a TAFKAL80ETC concert", i, 5)};
             GildedRose app = new GildedRose(items);
 
-            app.updateQuality();
+            app.updateItems();
 
             assertEquals(7, app.items[0].quality);
         }
@@ -193,7 +193,7 @@ class GildedRoseTest {
             Item[] items = new Item[]{new Backstage("Backstage passes to a TAFKAL80ETC concert", i, 5)};
             GildedRose app = new GildedRose(items);
 
-            app.updateQuality();
+            app.updateItems();
 
             assertEquals(8, app.items[0].quality);
         }
@@ -204,7 +204,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Backstage("Backstage passes to a TAFKAL80ETC concert", 0, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(0, app.items[0].quality);
     }
@@ -214,7 +214,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Conjured("Conjured Mana Cake", 1, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(3, app.items[0].quality);
     }
@@ -224,7 +224,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Conjured("Conjured Mana Cake", 0, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(1, app.items[0].quality);
     }
@@ -234,7 +234,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Conjured("Conjured Mana Cake", 0, 0)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         assertEquals(0, app.items[0].quality);
     }
@@ -244,7 +244,7 @@ class GildedRoseTest {
         Item[] items = new Item[]{new Item("non-updatable item", 1, 5)};
         GildedRose app = new GildedRose(items);
 
-        app.updateQuality();
+        app.updateItems();
 
         List<ILoggingEvent> loggingEvents = appender.list;
         assertEquals(1, loggingEvents.size());

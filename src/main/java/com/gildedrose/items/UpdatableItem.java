@@ -12,6 +12,10 @@ public class UpdatableItem extends Item {
 
     public void updateItem() {
         sellIn--;
+        updateQuality();
+    }
+
+    protected void updateQuality() {
         if (quality > 0) {
             quality--;
         }

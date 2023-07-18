@@ -7,8 +7,7 @@ public class AgedBrie extends UpdatableItem {
     }
 
     @Override
-    public void updateItem() {
-        sellIn--;
+    public void updateQuality() {
         if (quality < MAX_QUALITY) {
             quality++;
         }

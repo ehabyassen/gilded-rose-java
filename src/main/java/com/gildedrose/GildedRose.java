@@ -13,7 +13,7 @@ class GildedRose {
         this.items = items;
     }
 
-    public void updateQuality() {
+    public void updateItems() {
         for (Item item : items) {
             if (item instanceof UpdatableItem) {
                 ((UpdatableItem) item).updateItem();
