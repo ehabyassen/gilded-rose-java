@@ -1,15 +1,12 @@
 package com.gildedrose.items;
 
-public class Sulfuras extends DefaultItem {
+import com.gildedrose.Item;
 
-    private static final int QUALITY = 80;
+public class Sulfuras extends Item {
 
-    public Sulfuras(String name, int sellIn, int quality) {
-        super(name, sellIn, quality);
-    }
+    public static final int QUALITY = 80;
 
-    @Override
-    public void updateItem() {
-        quality = QUALITY;
+    public Sulfuras(String name, int sellIn) {
+        super(name, sellIn, QUALITY);
     }
 }

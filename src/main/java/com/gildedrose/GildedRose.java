@@ -1,6 +1,6 @@
 package com.gildedrose;
 
-import com.gildedrose.items.DefaultItem;
+import com.gildedrose.items.UpdatableItem;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,8 +15,8 @@ class GildedRose {
 
     public void updateQuality() {
         for (Item item : items) {
-            if (item instanceof DefaultItem ) {
-                ((DefaultItem) item).updateItem();
+            if (item instanceof UpdatableItem) {
+                ((UpdatableItem) item).updateItem();
             } else {
                 LOGGER.info("Non updatable item: " + item);
             }

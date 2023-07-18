@@ -33,7 +33,7 @@ class GildedRoseTest {
 
     @Test
     void test_that_quality_degrades_by_one_per_update_if_sellIn_has_not_passed() {
-        Item[] items = new Item[]{new DefaultItem("foo", 1, 5)};
+        Item[] items = new Item[]{new UpdatableItem("foo", 1, 5)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -43,7 +43,7 @@ class GildedRoseTest {
 
     @Test
     void test_that_quality_degrades_by_two_per_update_if_sellIn_has_passed() {
-        Item[] items = new Item[]{new DefaultItem("foo", 0, 5)};
+        Item[] items = new Item[]{new UpdatableItem("foo", 0, 5)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -53,7 +53,7 @@ class GildedRoseTest {
 
     @Test
     void test_that_quality_does_not_degrade_to_a_negative_value() {
-        Item[] items = new Item[]{new DefaultItem("foo", 0, 0)};
+        Item[] items = new Item[]{new UpdatableItem("foo", 0, 0)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -136,8 +136,8 @@ class GildedRoseTest {
     }
 
     @Test
-    void test_that_sellIn_is_decremented_by_one_per_update_if_item_is_not_Sulfuras() {
-        Item[] items = new Item[]{new DefaultItem("foo", 1, 5)};
+    void test_that_sellIn_is_decremented_by_one_per_update() {
+        Item[] items = new Item[]{new UpdatableItem("foo", 1, 5)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -147,7 +147,7 @@ class GildedRoseTest {
 
     @Test
     void test_that_Sulfuras_never_has_to_be_sold() {
-        Item[] items = new Item[]{new Sulfuras("Sulfuras, Hand of Ragnaros", 1, 80)};
+        Item[] items = new Item[]{new Sulfuras("Sulfuras, Hand of Ragnaros", 1)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
@@ -156,33 +156,13 @@ class GildedRoseTest {
     }
 
     @Test
-    void test_that_Sulfuras_quality_does_not_degrade_if_sellIn_has_not_passed() {
-        Item[] items = new Item[]{new Sulfuras("Sulfuras, Hand of Ragnaros", 1, 80)};
+    void test_that_Sulfuras_quality_does_not_degrade() {
+        Item[] items = new Item[]{new Sulfuras("Sulfuras, Hand of Ragnaros", 1)};
         GildedRose app = new GildedRose(items);
 
         app.updateQuality();
 
-        assertEquals(80, app.items[0].quality);
-    }
-
-    @Test
-    void test_that_Sulfuras_quality_does_not_degrade_if_sellIn_has_passed() {
-        Item[] items = new Item[]{new Sulfuras("Sulfuras, Hand of Ragnaros", -1, 80)};
-        GildedRose app = new GildedRose(items);
-
-        app.updateQuality();
-
-        assertEquals(80, app.items[0].quality);
-    }
-
-    @Test
-    void test_that_Sulfuras_quality_is_set_to_default_value_of_80() {
-        Item[] items = new Item[]{new Sulfuras("Sulfuras, Hand of Ragnaros", -1, 5)};
-        GildedRose app = new GildedRose(items);
-
-        app.updateQuality();
-
-        assertEquals(80, app.items[0].quality);
+        assertEquals(Sulfuras.QUALITY, app.items[0].quality);
     }
 
     @Test

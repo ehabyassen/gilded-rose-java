@@ -1,6 +1,6 @@
 package com.gildedrose.items;
 
-public class Backstage extends DefaultItem {
+public class Backstage extends UpdatableItem {
 
     public Backstage(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
