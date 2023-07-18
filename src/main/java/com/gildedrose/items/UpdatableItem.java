@@ -4,7 +4,7 @@ import com.gildedrose.Item;
 
 public class UpdatableItem extends Item {
 
-    static final int MAX_QUALITY = 50;
+    public static final int MAX_QUALITY = 50;
 
     public UpdatableItem(String name, int sellIn, int quality) {
         super(name, sellIn, quality);
