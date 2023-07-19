@@ -17,10 +17,8 @@ public class UpdatableItem extends Item {
 
     protected void updateQuality() {
         if (quality > 0) {
-            quality--;
-        }
-        if (sellIn < 0 && quality > 0) {
-            quality--;
+            quality -= (sellIn < 0) ? 2 : 1;
+            quality = Math.max(quality, 0);
         }
     }
 }

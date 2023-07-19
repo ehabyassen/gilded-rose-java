@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static com.gildedrose.items.UpdatableItem.MAX_QUALITY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class GildedRoseTest {
 
@@ -30,12 +31,16 @@ class GildedRoseTest {
 
     @Test
     void test_that_quality_does_not_degrade_to_a_negative_value() {
-        Item[] items = new Item[]{new UpdatableItem("foo", 0, 0)};
-        GildedRose app = new GildedRose(items);
+        for (int sallIn = 1; sallIn >= 0; sallIn--) {
+            for (int quality = 1; quality >= 0; quality--) {
+                Item[] items = new Item[]{new UpdatableItem("foo", sallIn, quality)};
+                GildedRose app = new GildedRose(items);
 
-        app.updateItems();
+                app.updateItems();
 
-        assertEquals(0, app.items[0].quality);
+                assertFalse(app.items[0].quality < 0);
+            }
+        }
     }
 
     @Test
@@ -208,11 +213,15 @@ class GildedRoseTest {
 
     @Test
     void test_that_Conjured_quality_does_not_degrade_to_a_negative_value() {
-        Item[] items = new Item[]{new Conjured("Conjured Mana Cake", 0, 0)};
-        GildedRose app = new GildedRose(items);
+        for (int sallIn = 1; sallIn >= 0; sallIn--) {
+            for (int quality = 4; quality >= 0; quality--) {
+                Item[] items = new Item[]{new Conjured("Conjured Mana Cake", sallIn, quality)};
+                GildedRose app = new GildedRose(items);
 
-        app.updateItems();
+                app.updateItems();
 
-        assertEquals(0, app.items[0].quality);
+                assertFalse(app.items[0].quality < 0);
+            }
+        }
     }
 }

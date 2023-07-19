@@ -12,12 +12,13 @@ public class BackstagePass extends UpdatableItem {
             quality = 0;
         } else if (quality < MAX_QUALITY) {
             quality++;
-            if (sellIn < 10 && quality < MAX_QUALITY) {
+            if (sellIn < 10) {
                 quality++;
             }
-            if (sellIn < 5 && quality < MAX_QUALITY) {
+            if (sellIn < 5) {
                 quality++;
             }
+            quality = Math.min(quality, MAX_QUALITY);
         }
     }
 }

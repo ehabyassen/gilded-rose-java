@@ -9,10 +9,8 @@ public class AgedBrie extends UpdatableItem {
     @Override
     public void updateQuality() {
         if (quality < MAX_QUALITY) {
-            quality++;
-        }
-        if (sellIn < 0 && quality < MAX_QUALITY) {
-            quality++;
+            quality += (sellIn < 0) ? 2 : 1;
+            quality = Math.min(quality, MAX_QUALITY);
         }
     }
 }

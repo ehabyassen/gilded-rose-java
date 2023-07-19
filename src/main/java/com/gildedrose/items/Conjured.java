@@ -8,11 +8,9 @@ public class Conjured extends UpdatableItem {
 
     @Override
     public void updateQuality() {
-        if (quality > 0) {
-            quality -= 2;
-        }
-        if (sellIn < 0 && quality > 0) {
-            quality -= 2;
+        if (quality > 1) {
+            quality -= (sellIn < 0) ? 4 : 2;
+            quality = Math.max(quality, 0);
         }
     }
 }
